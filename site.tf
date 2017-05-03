@@ -1,4 +1,7 @@
 variable "do_token" {}
+variable "ssh_keys" {
+  type = "list"
+}
 
 provider "digitalocean" {
   token = "${var.do_token}"
@@ -9,7 +12,7 @@ resource "digitalocean_droplet" "vpn" {
   name   = "vpn"
   region = "nyc1"
   size   = "512mb"
-  ssh_keys = [8322725]
+  ssh_keys = ["${var.ssh_keys}"]
 }
 
 resource "digitalocean_domain" "vpn" {

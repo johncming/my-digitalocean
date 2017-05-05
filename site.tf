@@ -1,4 +1,7 @@
 variable "do_token" {}
+
+variable "subdomain" {}
+
 variable "ssh_keys" {
   type = "list"
 }
@@ -16,6 +19,6 @@ resource "digitalocean_droplet" "vpn" {
 }
 
 resource "digitalocean_domain" "vpn" {
-  name       = "vpn11.johncming.net"
+  name       = "${var.subdomain}"
   ip_address = "${digitalocean_droplet.vpn.ipv4_address}"
 }

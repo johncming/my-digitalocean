@@ -20,7 +20,7 @@ resource "digitalocean_droplet" "default" {
   ssh_keys = ["${var.ssh_keys}"]
 }
 
-resource "digitalocean_domain" "vpn" {
+resource "digitalocean_domain" "default" {
   name       = "${digitalocean_droplet.default.name}"
   ip_address = "${digitalocean_droplet.default.ipv4_address}"
 }
